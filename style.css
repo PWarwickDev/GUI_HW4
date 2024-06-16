@@ -1,0 +1,96 @@
+/* File: style.css
+GUI Assignment: HW3 Creating an Interactive Dynamic Table
+Paul Warwick, UMass Lowell Computer Science, paul_warwick@student.uml.edu
+Copyright (c) 2024 by Paul Warwick. All rights reserved. May be freely copied or
+excerpted for educational purposes with credit to the author.
+updated by PW on 6/1/2024 at 5:04 pm.
+
+Description: CSS file to style webpage. 
+*/
+
+body {
+    /* Body styling */
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+
+h1 {
+    /* header styling */
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+form {
+    /* Form styling */
+    margin-bottom: 20px;
+}
+
+label {
+    /* Label styling */
+    margin-right: 10px;
+}
+
+input {
+    /* Input box styling */
+    margin-right: 20px;
+    padding: 5px;
+    width: 80px;
+}
+
+button {
+    /* Button styling */
+    padding: 5px 10px;
+    margin-top: 10px;
+}
+
+#error-message {
+    /* Error message styling */
+    color: red;
+    margin-bottom: 20px;
+}
+
+#table-container {
+    /* Table container styling */
+    overflow-x: auto;
+    margin-top: 20px;
+    max-height: 750px;
+    max-width: 100%;
+    border: 1px solid #ddd;
+    overflow-y: auto;
+    background-color: #fff;
+}
+
+table {
+    /* Table styling */
+    border-collapse: collapse;
+    margin: 0 auto;
+    width: max-content;
+}
+
+th,
+td {
+    /* Table header, data styling */
+    width: 40px; /* Set width to your desired default size */
+    height: 40px; /* Set height to your desired default size */
+    border: 1px solid #ddd;
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+
+th {
+    /* Table header styling */
+    background-color: #797979;
+    color: white;
+}
+
+
+.multiply-symbol {
+    /* Multiply operator styling */
+    background-color: #e4e4e4;
+    color: black;
+}
