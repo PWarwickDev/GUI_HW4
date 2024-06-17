@@ -1,5 +1,5 @@
 /* File: script.js
-GUI Assignment: Using the jQuery Plugin/UI with Your Dynamic Table
+GUI Assignment: Using the jQuery Plugin/UI with Your Dynamic Table part 2
 Paul Warwick, UMass Lowell Computer Science, paul_warwick@student.uml.edu
 Copyright (c) 2024 by Paul Warwick. All rights reserved. May be freely copied or
 excerpted for educational purposes with credit to the author.
@@ -165,6 +165,7 @@ $(document).ready(function() {
                 const product = i * j;
                 cell.textContent = product;
 
+                // Decide cell color based on row and column
                 const rowHue = ((i - startMultiplicand) / (endMultiplicand - startMultiplicand)) * 360;
                 const colHue = ((j - startMultiplier) / (endMultiplier - startMultiplier)) * 360;
                 const hue = (rowHue + colHue) / 2;

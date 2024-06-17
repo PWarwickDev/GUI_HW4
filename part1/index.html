@@ -1,0 +1,41 @@
+<!--File: index.html
+GUI Assignment: Using the jQuery Plugin/UI with Your Dynamic Table part 1
+Paul Warwick, UMass Lowell Computer Science, paul_warwick@student.uml.edu
+Copyright (c) 2024 by Paul Warwick. All rights reserved. May be freely copied or
+excerpted for educational purposes with credit to the author.
+updated by PW on 6/16/2024 at 8:34 pm.
+
+Description: Main HTML file. 
+-->
+
+ <!DOCTYPE html>
+ <html lang="en">
+
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Dynamic Multiplication Table</title>
+     <link rel="stylesheet" href="style.css"> <!-- css source -->
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+     <script src="script.js"></script> <!-- js source -->
+ </head>
+
+ <body>
+     <h1>Multiplication Chart</h1>
+     <form id="table-form"> <!-- Labels and input areas -->
+         <label for="start-multiplier">Start Multiplier:</label>
+         <input type="number" id="start-multiplier" name="start-multiplier" required>
+         <label for="end-multiplier">End Multiplier:</label>
+         <input type="number" id="end-multiplier" name="end-multiplier" required>
+         <label for="start-multiplicand">Start Multiplicand:</label>
+         <input type="number" id="start-multiplicand" name="start-multiplicand" required>
+         <label for="end-multiplicand">End Multiplicand:</label>
+         <input type="number" id="end-multiplicand" name="end-multiplicand" required>
+         <button type="submit">Generate Table</button>
+     </form>
+     <div id="error-message"></div> <!-- error message div -->
+     <div id="table-container"></div> <!-- scrollable table div-->
+ </body>
+
+ </html> 

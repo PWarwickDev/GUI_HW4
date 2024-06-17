@@ -1,5 +1,5 @@
 GUI I
-HW4: Using the jQuery Plugin/UI with Your Dynamic Table
+HW4: Using the jQuery Plugin/UI with Your Dynamic Table part 2
 Paul Warwick
 Student ID: 01902962
 Student Email: paul_warwick@student.uml.edu
@@ -26,6 +26,6 @@ Requirement Fulfillment:
 
     Based on these facts, I believe I have fulfilled all requirements for this assignment.
 
-Website Link: https://pwarwickdev.github.io/HW4/
+Website Link: https://pwarwickdev.github.io/HW4/part2
 
-Github Repo: https://github.com/PWarwickDev/HW4
+Github Repo: https://github.com/PWarwickDev/HW4/part2
