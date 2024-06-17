@@ -1,14 +1,3 @@
-<!--
-File: index.html
-GUI Assignment: HW3 Creating an Interactive Dynamic Table
-Paul Warwick, UMass Lowell Computer Science, paul_warwick@student.uml.edu
-Copyright (c) 2024 by Paul Warwick. All rights reserved. May be freely copied or
-excerpted for educational purposes with credit to the author.
-updated by PW on 6/1/2024 at 5:04 pm.
-
-Description: Main page for project, styled by style.css and made dynamic by script.js
--->
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,27 +5,42 @@ Description: Main page for project, styled by style.css and made dynamic by scri
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dynamic Multiplication Table</title>
-    <link rel="stylesheet" href="style.css"> <!-- css source -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
-    <script src="script.js"></script> <!-- js source -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <h1>Multiplication Chart</h1>
-    <form id="table-form"> <!-- Labels and input areas -->
+    <form id="table-form">
         <label for="start-multiplier">Start Multiplier:</label>
-        <input type="number" id="start-multiplier" name="start-multiplier" required>
+        <input type="text" id="start-multiplier" class="slider-input" name="start-multiplier" required>
+        <div id="slider-start-multiplier" class="slider"></div>
+
         <label for="end-multiplier">End Multiplier:</label>
-        <input type="number" id="end-multiplier" name="end-multiplier" required>
+        <input type="text" id="end-multiplier" class="slider-input" name="end-multiplier" required>
+        <div id="slider-end-multiplier" class="slider"></div>
+
         <label for="start-multiplicand">Start Multiplicand:</label>
-        <input type="number" id="start-multiplicand" name="start-multiplicand" required>
+        <input type="text" id="start-multiplicand" class="slider-input" name="start-multiplicand" required>
+        <div id="slider-start-multiplicand" class="slider"></div>
+
         <label for="end-multiplicand">End Multiplicand:</label>
-        <input type="number" id="end-multiplicand" name="end-multiplicand" required>
+        <input type="text" id="end-multiplicand" class="slider-input" name="end-multiplicand" required>
+        <div id="slider-end-multiplicand" class="slider"></div>
+
         <button type="submit">Generate Table</button>
     </form>
-    <div id="error-message"></div> <!-- error message div -->
-    <div id="table-container"></div> <!-- scrollable table div-->
+    <div id="error-message"></div>
+    <div id="tabs">
+        <ul id="tabs-list">
+            <!-- Dynamically added tabs go here -->
+        </ul>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
