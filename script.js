@@ -1,5 +1,16 @@
+/* File: script.js
+GUI Assignment: Using the jQuery Plugin/UI with Your Dynamic Table
+Paul Warwick, UMass Lowell Computer Science, paul_warwick@student.uml.edu
+Copyright (c) 2024 by Paul Warwick. All rights reserved. May be freely copied or
+excerpted for educational purposes with credit to the author.
+updated by PW on 6/16/2024 at 10:04 pm.
+
+Description: Js file using JQuery to validate inputs. Has slider or input box option
+for number inputs. 
+*/
+
 $(document).ready(function() {
-    // Initialize sliders and bind to corresponding input fields
+    // Initialize the sliders and bind them to corresponding input fields
     $('.slider-input').each(function() {
         const input = $(this);
         const sliderId = '#slider-' + input.attr('id');
@@ -14,40 +25,37 @@ $(document).ready(function() {
             min: minVal,
             max: maxVal,
             slide: function(event, ui) {
-                input.val(ui.value); // Update input field value on slider slide
+                input.val(ui.value); // Update on slider slide
             },
             change: function(event, ui) {
-                input.val(ui.value); // Update input field value on slider change
+                input.val(ui.value); // Update on slider change
             }
         });
 
         // Update slider value on input change
         input.on('blur', function() {
-            validateInput($(this), sliderId, minVal, maxVal); // Validate input after the user has finished typing
+            validateInput($(this), sliderId, minVal, maxVal); // after user has typed, then validation
         });
     });
 
-    // Function to validate input and update slider
+    // Validates input and updates slider
     function validateInput(input, sliderId, minVal, maxVal) {
-        let value = input.val().trim(); // Trim any leading/trailing whitespace
+        let value = input.val().trim(); // Trim any whitespace
         if (value === '') {
-            input.val(0); // Default to 0 if input is empty
+            input.val(0); 
         } else if (/^(-)?\d+$/.test(value)) {
-            // Check if input is a valid integer (allowing optional negative sign)
+            // Check if input is a valid integer
             value = parseInt(value);
-            value = Math.min(Math.max(value, minVal), maxVal); // Ensure value is within range
-            input.val(value); // Update input with validated value
+            value = Math.min(Math.max(value, minVal), maxVal);
+            input.val(value);
             $(sliderId).slider('value', value); // Update corresponding slider
-        } else {
-            // If input is invalid, reset to previous valid value or default to 0
-            input.val(0); // Default to 0 if input is invalid
         }
     }
 
-    // jQuery UI tabs initialization
+    // jQuery tabs initialization
     $('#tabs').tabs();
 
-    // Form validation and table generation
+    // Form validating and table generation
     $('#table-form').validate({
         submitHandler: function(form) {
             $('#error-message').text('');
@@ -56,7 +64,29 @@ $(document).ready(function() {
         }
     });
 
+    // Add Delete Selected button
+    const deleteSelectedButton = $('<button>').attr({
+        id: 'delete-selected',
+        type: 'button'
+    }).text('Delete Selected').appendTo($('#tabs-list'));
+
+    deleteSelectedButton.on('click', function() {
+        deleteSelectedTabs();
+    });
+
+    // Add Delete All button
+    const deleteAllButton = $('<button>').attr({
+        id: 'delete-all',
+        type: 'button'
+    }).text('Delete All').appendTo($('#tabs-list'));
+
+    deleteAllButton.on('click', function() {
+        deleteAllTabs();
+    });
+
+    // Tab creation
     function generateTab() {
+        
         const startMultiplier = parseInt($('#start-multiplier').val());
         const endMultiplier = parseInt($('#end-multiplier').val());
         const startMultiplicand = parseInt($('#start-multiplicand').val());
@@ -70,9 +100,25 @@ $(document).ready(function() {
         addTab(tabLabel, generateTable(startMultiplier, endMultiplier, startMultiplicand, endMultiplicand));
     }
 
+    // Checking inputs 
     function validateInputs(startMultiplier, endMultiplier, startMultiplicand, endMultiplicand) {
-        if (isNaN(startMultiplier) || isNaN(endMultiplier) || isNaN(startMultiplicand) || isNaN(endMultiplicand)) {
-            displayError("Enter only valid numbers into input boxes (-50 to 50).");
+        if (isNaN(startMultiplier)) {
+            displayError("Enter only valid numbers into Start Multiplier form (-50 to 50).");
+            return false;
+        }
+
+        if (isNaN(endMultiplier)) {
+            displayError("Enter only valid numbers into End Multiplier form (-50 to 50).");
+            return false;
+        }
+
+        if (isNaN(startMultiplicand)) {
+            displayError("Enter only valid numbers into Start Multiplicand form (-50 to 50).");
+            return false;
+        }
+
+        if (isNaN(endMultiplicand)) {
+            displayError("Enter only valid numbers into End Multiplicand form (-50 to 50).");
             return false;
         }
 
@@ -90,6 +136,7 @@ $(document).ready(function() {
         return true;
     }
 
+    // Creation of table
     function generateTable(startMultiplier, endMultiplier, startMultiplicand, endMultiplicand) {
         const table = document.createElement('table');
 
@@ -133,13 +180,19 @@ $(document).ready(function() {
         return table;
     }
 
+    // Errors output
     function displayError(message) {
         $('#error-message').text(message);
     }
 
+    // Adding the tabs
     function addTab(tabLabel, table) {
         const tabId = `tabs-${$('#tabs').children('ul').children('li').length + 1}`;
         const li = $('<li>').appendTo($('#tabs-list'));
+        const checkbox = $('<input>').attr({
+            type: 'checkbox',
+            id: `checkbox-${tabId}`
+        }).appendTo(li);
         $('<a>').attr('href', `#${tabId}`).text(tabLabel).appendTo(li);
 
         const tabContent = $('<div>').attr('id', tabId).addClass('tab-content').append(table);
@@ -152,4 +205,23 @@ $(document).ready(function() {
             $('#tabs').tabs('refresh');
         });
     }
+
+    // Deletes all selected tabs
+    function deleteSelectedTabs() {
+        const checkboxes = $('#tabs-list').find('input[type="checkbox"]:checked');
+        checkboxes.each(function() {
+            const panelId = $(this).closest('li').remove().attr('aria-controls');
+            $(`#${panelId}`).remove();
+        });
+    }
+
+    // Deletes all the tabs 
+    function deleteAllTabs() {
+        const checkboxes = $('#tabs-list').find('input');
+        checkboxes.each(function() {
+            const panelId = $(this).closest('li').remove().attr('aria-controls');
+            $(`#${panelId}`).remove();
+        });
+    }
+
 });

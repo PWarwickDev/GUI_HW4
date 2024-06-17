@@ -1,10 +1,10 @@
 GUI I
-HW3: Creating an Interactive Dynamic Table
+HW4: Using the jQuery Plugin/UI with Your Dynamic Table
 Paul Warwick
 Student ID: 01902962
 Student Email: paul_warwick@student.uml.edu
 
-Project Description: Used Html, CSS, and JS to design a webpage with a dynamic multiplication table.
+Project Description: Used Html, CSS, and JS to design a webpage with a dynamic multiplication table, with Jquery input validation and error handling. Also with dual binding inputs of sliders and manual input boxes.
 
 General Structure: index.html is styled by style.css, and made dynamic by script.js
 
@@ -19,9 +19,13 @@ Requirement Fulfillment:
     - Input is checked before table creation, nothing other than numbers are allowed.
     - Table results are correct.
     - Files are detailed with comments, and formatted well.
+    - Input and errors dealt with by jquery plugin.
+    - Sliders or input box can be used for table creation. They also update each other.
+    - Tabs can be made and chosen for display.
+    - Tabs can be selected to be deleted, then deleted by "Delete selected". Or deleted en masse by clicking the "Delete all" button.
 
     Based on these facts, I believe I have fulfilled all requirements for this assignment.
 
-Website Link: https://pwarwickdev.github.io/HW3/
+Website Link: https://pwarwickdev.github.io/HW4/
 
-Github Repo: https://github.com/PWarwickDev/HW3
+Github Repo: https://github.com/PWarwickDev/HW4
